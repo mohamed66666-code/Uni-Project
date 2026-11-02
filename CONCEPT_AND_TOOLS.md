@@ -43,9 +43,9 @@ A Flutter mobile application that brings multiple university services together i
 - Draw.io
 
 ## 7. Project Team
-- Team Member 1
-- Team Member 2
-- Team Member 3
+- Mohamed Elkhabaty
+- Mostafa Hanafe
+- Zeyad Ghonem
 
 ## 8. Project Goals
 - Improve the student experience.
