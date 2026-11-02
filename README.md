@@ -1,17 +1,18 @@
-# my_first_app
+Functional Requirements:
 
-A new Flutter project.
+1. Students can create accounts and log in.
+2. Students can view university announcements.
+3. Students can view their attendance records.
+4. Students can browse restaurant menus and place orders.
+5. Students can view available university trips and book seats.
+6. Students can view university fees and payment status.
+7. Administrators can manage announcements.
+8. Administrators can manage trips and student bookings.
 
-## Getting Started
+Non-Functional Requirements:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Security: Protect student accounts and information.
+- Performance: The application should respond quickly.
+- Usability: Simple and user-friendly interface.
+- Scalability: Support increasing numbers of students.
+- Reliability: Maintain consistent and accurate data.
