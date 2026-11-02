@@ -1,0 +1,263 @@
+
+@startuml
+
+title University Services App - Detailed Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam shadowing false
+skinparam class {
+    BackgroundColor White
+    BorderColor #333333
+    ArrowColor #333333
+}
+
+' =========================
+' Users
+' =========================
+
+class Student {
+  +String id
+  +String name
+  +String email
+  +String password
+  +String faculty
+  +String university
+  +String phone
+  +login()
+  +logout()
+  +viewProfile()
+  +updateProfile()
+  +viewNotifications()
+}
+
+class Admin {
+  +String id
+  +String name
+  +String email
+  +String password
+  +login()
+  +manageStudents()
+  +manageCourses()
+  +manageAttendance()
+  +manageRestaurant()
+  +manageTrips()
+  +managePayments()
+  +manageNotifications()
+}
+
+' =========================
+' Academic Services
+' =========================
+
+class Course {
+  +String courseCode
+  +String courseName
+  +int creditHours
+  +String instructor
+  +addCourse()
+  +updateCourse()
+  +deleteCourse()
+}
+
+class Attendance {
+  +String id
+  +String courseName
+  +Date date
+  +String status
+  +String studentId
+  +recordAttendance()
+  +updateAttendance()
+  +viewAttendance()
+}
+
+class Schedule {
+  +String id
+  +String day
+  +String time
+  +String hall
+  +String doctor
+  +viewSchedule()
+  +updateSchedule()
+}
+
+class Grade {
+  +String id
+  +String courseName
+  +double totalGrade
+  +String gradeLetter
+  +calculateGrade()
+  +viewGrade()
+}
+
+' =========================
+' Library Services
+' =========================
+
+class Book {
+  +String id
+  +String title
+  +String author
+  +String category
+  +String fileUrl
+  +downloadBook()
+  +viewBook()
+}
+
+' =========================
+' Communication Services
+' =========================
+
+class Notification {
+  +String id
+  +String title
+  +String message
+  +Date date
+  +bool isRead
+  +sendNotification()
+  +markAsRead()
+}
+
+class Ticket {
+  +String id
+  +String title
+  +String department
+  +String message
+  +String status
+  +String reply
+  +createTicket()
+  +replyToTicket()
+  +closeTicket()
+}
+
+' =========================
+' Restaurant Services
+' =========================
+
+class Restaurant {
+  +String id
+  +String name
+  +String location
+  +String openingHours
+  +addMeal()
+  +updateMeal()
+  +manageOrders()
+}
+
+class Meal {
+  +String id
+  +String name
+  +String description
+  +double price
+  +bool available
+  +updatePrice()
+  +checkAvailability()
+}
+
+class Order {
+  +String id
+  +Date orderDate
+  +double totalPrice
+  +String status
+  +createOrder()
+  +calculateTotal()
+  +cancelOrder()
+  +trackOrder()
+}
+
+class OrderItem {
+  +String id
+  +int quantity
+  +double subtotal
+  +calculateSubtotal()
+}
+
+' =========================
+' Trip Services
+' =========================
+
+class Trip {
+  +String id
+  +String destination
+  +Date date
+  +double price
+  +int availableSeats
+  +addTrip()
+  +updateTrip()
+  +cancelTrip()
+  +checkAvailableSeats()
+}
+
+class Booking {
+  +String id
+  +Date bookingDate
+  +String status
+  +confirmBooking()
+  +cancelBooking()
+  +viewBooking()
+}
+
+' =========================
+' Payment Services
+' =========================
+
+class Payment {
+  +String id
+  +double amount
+  +Date paymentDate
+  +String paymentMethod
+  +String status
+  +processPayment()
+  +confirmPayment()
+  +refundPayment()
+}
+
+' =========================
+' Relationships
+' =========================
+
+Student "1" -- "*" Attendance : has
+Student "*" -- "*" Course : enrolls in
+Course "1" -- "*" Attendance : records
+Course "1" -- "*" Schedule : has
+Student "1" -- "*" Grade : receives
+Course "1" -- "*" Grade : includes
+
+Student "*" -- "*" Book : accesses
+
+Student "1" -- "*" Notification : receives
+Student "1" -- "*" Ticket : creates
+
+Restaurant "1" -- "*" Meal : offers
+Student "1" -- "*" Order : places
+Restaurant "1" -- "*" Order : receives
+Order "1" *-- "*" OrderItem : contains
+Meal "1" -- "*" OrderItem : ordered in
+
+Student "1" -- "*" Booking : makes
+Trip "1" -- "*" Booking : has
+
+Student "1" -- "*" Payment : makes
+Payment ..> Order : may pay for
+Payment ..> Booking : may pay for
+
+' =========================
+' Admin Management
+' =========================
+
+Admin ..> Student : manages
+Admin ..> Course : manages
+Admin ..> Attendance : manages
+Admin ..> Schedule : manages
+Admin ..> Grade : manages
+Admin ..> Book : manages
+Admin ..> Notification : manages
+Admin ..> Ticket : manages
+Admin ..> Restaurant : manages
+Admin ..> Meal : manages
+Admin ..> Order : manages
+Admin ..> Trip : manages
+Admin ..> Booking : manages
+Admin ..> Payment : manages
+
+@enduml
